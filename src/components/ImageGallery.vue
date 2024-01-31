@@ -4,9 +4,12 @@
     <div v-for="(image, index) in images" :key="index">
       <img :src="image" alt="Slika">
     </div>
-
+    
+    <h2>Paso 2: Selecciona los síntomas que has tenido</h2>
     <!-- Checkboxes de síntomas -->
     <div>Dale click a los síntomas que presentes: {{ checkedNames }}</div>
+    <br />
+    <br />
 
     <input type="checkbox" id="fiebre repentina" value="fiebre repentina" v-model="checkedNames">
     <label for="fiebre repentina">fiebre repentina</label>
@@ -16,6 +19,21 @@
 
     <input type="checkbox" id="hemorragia bucal" value="hemorragia bucal" v-model="checkedNames">
     <label for="hemorragia bucal">hemorragia bucal</label>
+
+    <br />
+    <br />
+    <input type="checkbox" id="hemorragia nasal" value="hemorragia nasal" v-model="checkedNames">
+    <label for="hemorragia nasal">hemorragia nasal</label>
+
+    <input type="checkbox" id="dolor muscular" value="dolor muscular" v-model="checkedNames">
+    <label for="dolor muscular">dolor muscular</label>
+    
+    <input type="checkbox" id="dolor de articulaciones" value="dolor de articulaciones" v-model="checkedNames">
+    <label for="dolor de articulaciones">dolor de articulaciones</label>
+    <br />
+    <br />
+    <input type="checkbox" id="vomitos" value="vomitos" v-model="checkedNames">
+    <label for="vomitos">vomitos</label>
   </div>
 </template>
 

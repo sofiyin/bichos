@@ -2,8 +2,8 @@
 <template>
 
   <div>
-    <h2>Paso 1: Sube una foto de tu picadura</h2>
-    <h3>Elige una foto de tu picadura</h3>
+    <h2>Paso 3: Tu ubicación </h2>
+    <h3>Elige tu locación reciente</h3>
     <input type="file" @change="uploadImages" multiple>
     <div v-for="(imageUrl, index) in imageUrls" :key="index">
       <img :src="imageUrl" alt="Prenesena slika">

@@ -30,10 +30,16 @@ class ENFERMEDADES(db.Model):
     dolor_en_las_articulaciones: int
     vomitos:int
 
-    idenfermedades = db.Column(db.Integer, primary_key=True)
+    fiebre_repentina = db.Column(db.Integer, primary_key=True)
+    dolor_de_cabeza = db.Column(db.Integer)
+    hemorragia_bucal = db.Column(db.Integer)
+    hemorragia_nasal = db.Column(db.Integer)
+    dolor_muscular = db.Column(db.Integer)
+    dolor_en_las_articulaciones = db.Column(db.Integer)
+    vomitos = db.Column(db.Integer)
    
     def __repr__(self):
-        return f'<enfermedades {self.idenfermedades}>'
+        return f'<enfermedades {self.fiebre_repentina}>'
     
 @app.route('/api/data',methods=['GET', 'POST'])
 def get_data():
@@ -43,7 +49,15 @@ def get_data():
     
     elif request.method == 'POST':
         data = request.get_json()
-        enfermedades = ENFERMEDADES(idenfermedades=data['idenfermedades'])
+        enfermedades = ENFERMEDADES(
+            fiebre_repentina=data["fiebre_repentina"],
+            dolor_de_cabeza=data["dolor_de_cabeza"],
+            hemorragia_bucal=data["hemorragia_bucal"],
+            hemorragia_nasal=data["hemorragia_nasal"],
+            dolor_muscular=data["dolor_muscular"],
+            dolor_en_las_articulaciones=data["dolor_en_las_articulaciones"],
+            vomitos=data["vomitos"]
+        )
         db.session.add(enfermedades)
         db.session.commit()
         return jsonify(enfermedades)

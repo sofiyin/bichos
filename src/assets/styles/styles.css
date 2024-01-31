@@ -1,11 +1,40 @@
 #app {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  padding: 20px;
+  gap: 10px;
+  padding-left: 20px;
+  padding-top: 0px;
 }
+.jumbotron {
+  width:100%;
+  padding-top: 0%;
+  padding-bottom: 0%;
+  padding-inline-start: 0%;
+  padding-inline-end: 0%;
+  background-color: #ffda22;;
+  border-radius: 15px;
+  text-align: center;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size:xx-large;
+  box-shadow:  5px #e3e2e2;
 
+}
+.jumbotron2 {
+  width:100%;
+  padding-top: 0%;
+  padding-bottom: 2%;
+  padding-inline-start: 0%;
+  padding-inline-end: 0%;
+  border-radius: 10%;
+  background-color: rgb(255, 255, 255);;
+  border: 3px solid rgb(53, 87, 166);
+  text-align: center;
 
+}
+.container text-center{
+  padding: 0%;
+  padding-inline-end: 0;
+}
 .image-gallery {
   display: flex;
   flex-wrap: wrap;

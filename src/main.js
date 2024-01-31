@@ -9,3 +9,4 @@ app.config.globalProperties.$http = axios;
 
 // Montar la aplicación en el elemento con el id 'app'
 app.mount('#app');
+

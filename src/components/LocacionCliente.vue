@@ -1,42 +1,57 @@
-
 <template>
-
   <div>
-    <h2>Paso 3: Tu ubicación </h2>
-    <h3>Elige tu locación reciente</h3>
-    <input type="file" @change="uploadImages" multiple>
-    <div v-for="(imageUrl, index) in imageUrls" :key="index">
-      <img :src="imageUrl" alt="Prenesena slika">
-      <button @click="deleteImage(index)">Subir</button>
-
+    <div class="jumbotron3">
+      <h2>Paso 3: Tu ubicación </h2>
     </div>
+    
+    <h3>Elige tu locación reciente</h3>
+     <div>
+    <div class="google-map" ref="googleMap"></div>
+    <template v-if="Boolean(this.google) && Boolean(this.map)">
+      <slot
+        :google="google"
+        :map="map"
+      />
+    </template>
+  </div>
+    
   </div>
 </template>
 
 <script>
+import Loader from 'google-maps-api-loader';
+
 export default {
+  props: {
+    mapConfig: Object,
+    apiKey: String,
+  },
+
   data() {
     return {
-      imageUrls: []
+      google: null,
+      map: null,
     };
   },
+
+  async mounted() {
+    // As per the documentation for the google maps API loader
+    const googleMapApi = await Loader({
+      apiKey: this.apiKey,
+    });
+
+    // Set the google object from the correct location
+    this.google = window.google || googleMapApi;
+
+    this.initializeMap();
+  },
+
   methods: {
-    uploadImages(event) {
-      const files = event.target.files;
-      for (let i = 0; i < files.length; i++) {
-        const file = files[i];
-        if (file) {
-          const reader = new FileReader();
-          reader.onload = () => {
-            this.imageUrls.push(reader.result);
-          };
-          reader.readAsDataURL(file);
-        }
-      }
+    initializeMap() {
+      const mapContainer = this.$refs.googleMap;
+      this.map = new this.google.maps.Map(mapContainer, this.mapConfig);
     },
-    deleteImage(index) {
-      this.imageUrls.splice(index, 1);
-    }
-  }
+  },
 };
 </script>
+

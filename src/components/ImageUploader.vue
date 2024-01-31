@@ -2,7 +2,10 @@
 <template>
 
   <div>
-    <h2 >Paso 1: Sube una foto de tu picadura</h2>
+    <div class="jumbotron3">
+      <h2>Paso 1: Sube una foto de tu picadura</h2>
+    </div>
+    
     <h3>Elige una foto de tu picadura</h3>
     <input type="file" @change="uploadImages" multiple>
     <div v-for="(imageUrl, index) in imageUrls" :key="index">

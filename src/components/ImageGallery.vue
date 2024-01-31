@@ -5,9 +5,13 @@
       <img :src="image" alt="Slika">
     </div>
     
-    <h2>Paso 2: Selecciona los síntomas que has tenido</h2>
+    <div class="jumbotron3">
+      <h2>Paso 2: Selecciona los síntomas que has tenido</h2>
+    </div>
+
+    
     <!-- Checkboxes de síntomas -->
-    <div>Dale click a los síntomas que presentes: {{ checkedNames }}</div>
+    <div> <h3>Dale click a los síntomas que presentes: </h3>{{ checkedNames }}</div>
     <br />
     <br />
 

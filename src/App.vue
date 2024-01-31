@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div>
     <div>
     <div class="jumbotron2">
       <div class="container text-center">
@@ -7,8 +7,17 @@
       </div>
     </div>
     
-    <ImageGallery />
-    <LocacionCliente />
+    <div class="jumbotron2">
+      <div class="container text-center">
+        <ImageGallery />    
+      </div>
+    </div>
+
+    <div class="jumbotron2">
+      <div class="container text-center">
+        <LocacionCliente />   
+      </div>
+    </div>
     
 	<label for="checkbox">{{ checked }}</label>
   </div>

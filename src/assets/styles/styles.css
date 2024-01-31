@@ -1,5 +1,5 @@
 #app {
-  display: flex;
+  width: 95%;
   flex-wrap: wrap;
   gap: 10px;
   padding-left: 20px;
@@ -25,12 +25,28 @@
   padding-bottom: 2%;
   padding-inline-start: 0%;
   padding-inline-end: 0%;
-  border-radius: 10%;
+  border-radius: 10px;
   background-color: rgb(255, 255, 255);;
   border: 3px solid rgb(53, 87, 166);
   text-align: center;
+  margin-bottom: 10px;
 
 }
+
+.jumbotron3 {
+  background-color: rgb(20, 149, 149);
+  border-radius: 7px 7px 0 0; 
+}
+
+.jumbotron3 h2 {
+  margin: 0;
+  padding: 5px;
+  color: white;
+  margin-bottom: 6px;
+  text-align: left;
+  padding-left: 2%;
+}
+
 .container text-center{
   padding: 0%;
   padding-inline-end: 0;

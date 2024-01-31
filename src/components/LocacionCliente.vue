@@ -1,57 +1,85 @@
+
 <template>
+
   <div>
     <div class="jumbotron3">
       <h2>Paso 3: Tu ubicación </h2>
     </div>
-    
     <h3>Elige tu locación reciente</h3>
-     <div>
-    <div class="google-map" ref="googleMap"></div>
-    <template v-if="Boolean(this.google) && Boolean(this.map)">
-      <slot
-        :google="google"
-        :map="map"
-      />
-    </template>
-  </div>
+      <div class="entry-content entry clearfix">
+      <div class="tabs-shortcode tabs-wrapper container-wrapper tabs-horizontal flex-tabs is-flex-tabs-shortcodes">
+      <ul class="tabs" style="opacity: 1;">
+      <li class="active">
+      </li>
+      <li class="flexMenu-viewMore"><a href="#" title=""><span class="tie-icon-dots-three-horizontal"><span class="screen-reader-text">More</span></span></a><ul class="flexMenu-popup" style="display:none; position: absolute;"><li>
+        <a href="#tab-content-2"> Sala de situación semanal </a>
+      </li><li>
+        <a href="#tab-content-3"> Sala diaria </a>
+      </li><li>
+        <a href="#tab-content-4"> Sala semanal en PDF </a>
+      </li></ul></li></ul>
     
+      <div class="tab-content" id="tab-content-1">
+        <div class="tab-content-wrap">
+  <iframe src="https://app7.dge.gob.pe/maps/denguemap/" width="95%" height="1000px"></iframe><br>
+
+        </div>
+      </div>
+    
+
+      <div class="tab-content" id="tab-content-2">
+        <div class="tab-content-wrap">
+  <h2>Sala de situación semanal</h2>
+  <p><b><a class="alert-link" href="https://www.dge.gob.pe/sala-situacional-dengue/" rel="noopener noreferrer">Ir a Sala de situación semanal <i class="fas fa-external-link-alt"></i> <img src="https://www.dge.gob.pe/images/external_link.png" width="20px"></a></b><br>
+
+        </p></div>
+      </div>
+    
+
+      <div class="tab-content" id="tab-content-3">
+        <div class="tab-content-wrap">
+  <h2>Sala de situación diaria</h2>
+  <p><b><a class="alert-link" href="https://www.dge.gob.pe/sala-situacional-dengue/diaria/" target="_blank" rel="noopener noreferrer">Ir a Sala de situación diaria <i class="fas fa-external-link-alt"></i> <img src="https://www.dge.gob.pe/images/external_link.png" width="20px"></a></b><br>
+
+        </p></div>
+      </div>
+    
+
+      <div class="tab-content" id="tab-content-4">
+        <div class="tab-content-wrap">  
+        </div>
+      </div>
+        <div class="clearfix"></div>
+      </div>
+      </div>
+   
   </div>
 </template>
 
 <script>
-import Loader from 'google-maps-api-loader';
-
 export default {
-  props: {
-    mapConfig: Object,
-    apiKey: String,
-  },
-
   data() {
     return {
-      google: null,
-      map: null,
+      imageUrls: []
     };
   },
-
-  async mounted() {
-    // As per the documentation for the google maps API loader
-    const googleMapApi = await Loader({
-      apiKey: this.apiKey,
-    });
-
-    // Set the google object from the correct location
-    this.google = window.google || googleMapApi;
-
-    this.initializeMap();
-  },
-
   methods: {
-    initializeMap() {
-      const mapContainer = this.$refs.googleMap;
-      this.map = new this.google.maps.Map(mapContainer, this.mapConfig);
+    uploadImages(event) {
+      const files = event.target.files;
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = () => {
+            this.imageUrls.push(reader.result);
+          };
+          reader.readAsDataURL(file);
+        }
+      }
     },
-  },
+    deleteImage(index) {
+      this.imageUrls.splice(index, 1);
+    }
+  }
 };
 </script>
-

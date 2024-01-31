@@ -19,10 +19,17 @@ db = SQLAlchemy(app)
 
 CORS(app)  # Configura CORS
 @dataclass
-class enfermedades(db.Model):
+class ENFERMEDADES(db.Model):
     __tablename__ = 'enfermedades'
 
-    idenfermedades:int
+    fiebre_repentina: int
+    dolor_de_cabeza:int
+    hemorragia_bucal:int
+    hemorragia_nasal:int
+    dolor_muscular:int
+    dolor_en_las_articulaciones: int
+    vomitos:int
+
     idenfermedades = db.Column(db.Integer, primary_key=True)
    
     def __repr__(self):
@@ -30,9 +37,16 @@ class enfermedades(db.Model):
     
 @app.route('/api/data',methods=['GET', 'POST'])
 def get_data():
+    if request.method=='GET':
+        enfermedades = ENFERMEDADES.query.all()
+        return jsonify(enfermedades)
     
-    data = {'message': 'DATOS PARA LA MACHINE LEARNING :D'}
-    return jsonify(data)
+    elif request.method == 'POST':
+        data = request.get_json()
+        enfermedades = ENFERMEDADES(idenfermedades=data['idenfermedades'])
+        db.session.add(enfermedades)
+        db.session.commit()
+        return jsonify(enfermedades)
 
 @app.route('/api/resultados')
 def resultados():

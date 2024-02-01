@@ -1,6 +1,13 @@
 <template>
   <div>
     <div>
+
+    <div class="jumbotron">
+      <div class="container text-center">
+        <h1> Moskitos</h1>   
+      </div>
+    </div>
+
     <div class="jumbotron2">
       <div class="container text-center">
         <ImageUploader />     
@@ -18,6 +25,7 @@
         <LocacionCliente />   
       </div>
     </div>
+
     
 	<label for="checkbox">{{ checked }}</label>
   </div>

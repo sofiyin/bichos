@@ -15,29 +15,33 @@
     <br />
     <br />
 
-    <input type="checkbox" id="fiebre repentina" value="fiebre repentina" v-model="checkedNames">
-    <label for="fiebre repentina">fiebre repentina</label>
+    <input type="checkbox" id="chkFiebreRepentina" value="fiebre_repentina" v-model="checkedNames">
+    <label for="chkFiebreRepentina">fiebre repentina</label>
 
-    <input type="checkbox" id="dolor de cabeza" value="dolor de cabeza" v-model="checkedNames">
-    <label for="dolor de cabeza">dolor de cabeza</label>
+    <input type="checkbox" id="chkDolorDeCabeza" value="dolor_de_cabeza" v-model="checkedNames">
+    <label for="chkDolorDeCabeza">dolor de cabeza</label>
 
-    <input type="checkbox" id="hemorragia bucal" value="hemorragia bucal" v-model="checkedNames">
-    <label for="hemorragia bucal">hemorragia bucal</label>
+    <input type="checkbox" id="chkHemorragiaBucal" value="hemorragia_bucal" v-model="checkedNames">
+    <label for="chkHemorragiaBucal">hemorragia bucal</label>
 
     <br />
     <br />
-    <input type="checkbox" id="hemorragia nasal" value="hemorragia nasal" v-model="checkedNames">
-    <label for="hemorragia nasal">hemorragia nasal</label>
+    <input type="checkbox" id="chkHemorragiaNasal" value="hemorragia_nasal" v-model="checkedNames">
+    <label for="chkHemorragiaNasal">hemorragia nasal</label>
 
-    <input type="checkbox" id="dolor muscular" value="dolor muscular" v-model="checkedNames">
-    <label for="dolor muscular">dolor muscular</label>
+    <input type="checkbox" id="chkDolorMuscular" value="dolor_muscular" v-model="checkedNames">
+    <label for="chkDolorMuscular">dolor muscular</label>
     
-    <input type="checkbox" id="dolor de articulaciones" value="dolor de articulaciones" v-model="checkedNames">
-    <label for="dolor de articulaciones">dolor de articulaciones</label>
+    <input type="checkbox" id="chkDolorDeArticulaciones" value="dolor_en_las_articulaciones" v-model="checkedNames">
+    <label for="chkDolorDeArticulaciones">dolor de articulaciones</label>
+    
     <br />
     <br />
-    <input type="checkbox" id="vomitos" value="vomitos" v-model="checkedNames">
-    <label for="vomitos">vomitos</label>
+    <input type="checkbox" id="chkVomitos" value="vomitos" v-model="checkedNames">
+    <label for="chkVomitos">vomitos</label>
+    
+    <br> <br/>
+    <button @click="sendSymptoms">Enviar Síntomas</button>
   </div>
 </template>
 
@@ -47,20 +51,40 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      images: [],
-      checkedNames: []  // Inicializa el array para almacenar los síntomas seleccionados
+      images: [], 
+      checkedNames: []  // Initialize the array to store selected symptoms
     };
   },
-  mounted() {
-    // Realiza una solicitud a tu servidor Flask cuando el componente se monta
-    axios.get('http://localhost:5000/api/data')
-      .then(response => {
-        // Actualiza la galería de imágenes con los datos recibidos
-        this.images = response.data.images;
+  // ...
+methods: {
+  sendSymptoms() {
+    const mappedSymptoms = {};
+    for (const symptom of this.checkedNames) {
+      mappedSymptoms[symptom] = 1;
+    }
+
+    // Send the selected symptoms to the Flask backend
+    axios.post('http://localhost:5000/api/data', { symptoms: mappedSymptoms })
+      .then(() => {
+        console.log('Síntomas enviados');
       })
       .catch(error => {
-        console.error('Error al obtener datos desde Flask:', error);
+        console.error('Error al enviar síntomas a Flask:', error);
       });
   }
+},
+
+
+mounted() {
+  // Realiza una solicitud a tu servidor Flask cuando el componente se monta
+  axios.get('http://localhost:5000/api/data')
+    .then(response => {
+      // Actualiza la galería de imágenes con los datos recibidos
+      this.images = response.data.images;
+    })
+    .catch(error => {
+      console.error('Error al obtener datos desde Flask:', error);
+    });
+}
 };
 </script>

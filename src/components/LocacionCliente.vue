@@ -8,16 +8,24 @@
     <h3>Elige tu locación reciente</h3>
       <div class="entry-content entry clearfix">
       <div class="tabs-shortcode tabs-wrapper container-wrapper tabs-horizontal flex-tabs is-flex-tabs-shortcodes">
+      
       <ul class="tabs" style="opacity: 1;">
-      <li class="active">
+      <li class="flexMenu-viewMore">
+        <ul class="flexMenu-popup" style="display:none; position: absolute;">
+        
+        <li>
+          <a href="#tab-content-2"> Sala de situación semanal </a>
+        </li>
+        <li>
+          <a href="#tab-content-3"> Sala diaria </a>
+        </li>
+        <li>
+          <a href="#tab-content-4"> Sala semanal en PDF </a>
+        </li>
+
+        </ul>
       </li>
-      <li class="flexMenu-viewMore"><a href="#" title=""><span class="tie-icon-dots-three-horizontal"><span class="screen-reader-text">More</span></span></a><ul class="flexMenu-popup" style="display:none; position: absolute;"><li>
-        <a href="#tab-content-2"> Sala de situación semanal </a>
-      </li><li>
-        <a href="#tab-content-3"> Sala diaria </a>
-      </li><li>
-        <a href="#tab-content-4"> Sala semanal en PDF </a>
-      </li></ul></li></ul>
+      </ul>
     
       <div class="tab-content" id="tab-content-1">
         <div class="tab-content-wrap">

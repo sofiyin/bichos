@@ -42,6 +42,11 @@
     
     <br> <br/>
     <button @click="sendSymptoms">Enviar Síntomas</button>
+    <br><br/>
+
+    <router-link to="/LocacionCliente">
+      Siguiente
+    </router-link>
   </div>
 </template>
 

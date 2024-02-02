@@ -1,16 +1,16 @@
-
 <template>
   <div>
+    
     <div class="jumbotron3">
-      <h2>Paso 3: Tu ubicación </h2>
+      <h2>Resultados</h2><!-- Galería de imágenes -->
     </div>
-    <h3>Elige tu locación reciente</h3>
-    <h3>Ingresa el porcentaje de casos con cordenadas geográficas</h3>
-
-    <router-link to="/ResultadosCliente">
-      Ver Resultados
-    </router-link>
-      <div class="entry-content entry clearfix">
+    <h2>Hemos detectado en conjunto a lo seleccionado:</h2>
+    <h2>Fotografía, Síntomas y Locación </h2> 
+    <h2 style="background-color:tomato;">Podrías tener una enfermedad transmitida por mosquitos en un 76%. </h2> 
+    <h2>Te recomendamos que acudas a un médico para que te realice un diagnóstico más preciso. </h2>
+    <button type="button" class="btn btn-warning">Alertar a mis usuarios cercanos</button> <br><br/>
+    <button type="button" class="btn btn-warning">Actualizar mapa de casos</button> <br><br/>
+    <div class="entry-content entry clearfix">
       <div class="tabs-shortcode tabs-wrapper container-wrapper tabs-horizontal flex-tabs is-flex-tabs-shortcodes">
       
       <ul class="tabs" style="opacity: 1;">
@@ -64,34 +64,49 @@
         <div class="clearfix"></div>
       </div>
       </div>
-   
-  </div>
+  </div> 
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   data() {
     return {
-      imageUrls: []
+      images: [], 
+      checkedNames: []  // Initialize the array to store selected symptoms
     };
   },
-  methods: {
-    uploadImages(event) {
-      const files = event.target.files;
-      for (let i = 0; i < files.length; i++) {
-        const file = files[i];
-        if (file) {
-          const reader = new FileReader();
-          reader.onload = () => {
-            this.imageUrls.push(reader.result);
-          };
-          reader.readAsDataURL(file);
-        }
-      }
-    },
-    deleteImage(index) {
-      this.imageUrls.splice(index, 1);
+  // ...
+methods: {
+  sendSymptoms() {
+    const mappedSymptoms = {};
+    for (const symptom of this.checkedNames) {
+      mappedSymptoms[symptom] = 1;
     }
+
+    // Send the selected symptoms to the Flask backend
+    axios.post('http://localhost:5000/api/data', { symptoms: mappedSymptoms })
+      .then(() => {
+        console.log('Síntomas enviados');
+      })
+      .catch(error => {
+        console.error('Error al enviar síntomas a Flask:', error);
+      });
   }
+},
+
+
+mounted() {
+  // Realiza una solicitud a tu servidor Flask cuando el componente se monta
+  axios.get('http://localhost:5000/api/data')
+    .then(response => {
+      // Actualiza la galería de imágenes con los datos recibidos
+      this.images = response.data.images;
+    })
+    .catch(error => {
+      console.error('Error al obtener datos desde Flask:', error);
+    });
+}
 };
 </script>

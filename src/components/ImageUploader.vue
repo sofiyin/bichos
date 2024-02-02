@@ -1,4 +1,3 @@
-
 <template>
 
   <div>
@@ -11,8 +10,11 @@
     <div v-for="(imageUrl, index) in imageUrls" :key="index">
       <img :src="imageUrl" alt="Prenesena slika">
       <button @click="deleteImage(index)">Subir</button>
-
     </div>
+
+    <router-link to="/SendSyntomas">
+      Siguiente
+    </router-link>
   </div>
 </template>
 

@@ -32,6 +32,8 @@ class ENFERMEDADES(db.Model):
     dolor_muscular: int
     dolor_en_las_articulaciones: int
     vomitos: int
+    Fatiga: int
+    Ojos_rojos: int
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     fiebre_repentina = db.Column(db.Integer)
@@ -41,6 +43,8 @@ class ENFERMEDADES(db.Model):
     dolor_muscular = db.Column(db.Integer)
     dolor_en_las_articulaciones = db.Column(db.Integer)
     vomitos = db.Column(db.Integer)
+    Fatiga = db.Column(db.Integer)
+    Ojos_rojos = db.Column(db.Integer)
    
     def __repr__(self):
         return f'<enfermedades {self.id}>'
@@ -64,7 +68,9 @@ def get_data():
                 'hemorragia_nasal': symptom.hemorragia_nasal,
                 'dolor_muscular': symptom.dolor_muscular,
                 'dolor_en_las_articulaciones': symptom.dolor_en_las_articulaciones,
-                'vomitos': symptom.vomitos
+                'vomitos': symptom.vomitos,
+                'Fatiga': symptom.Fatiga,
+                'Ojos_rojos': symptom.Ojos_rojos
                 # Add more fields if needed
             }
             symptoms_data.append(symptom_data)
@@ -87,7 +93,7 @@ def get_data():
             # Borrar los datos existentes
             db.session.delete(existing_record)
             db.session.commit()
-        for key in ['fiebre_repentina', 'dolor_de_cabeza', 'hemorragia_bucal', 'hemorragia_nasal', 'dolor_muscular', 'dolor_en_las_articulaciones', 'vomitos']:
+        for key in ['fiebre_repentina', 'dolor_de_cabeza', 'hemorragia_bucal', 'hemorragia_nasal', 'dolor_muscular', 'dolor_en_las_articulaciones', 'vomitos','Fatiga','Ojos_rojos']:
             if key not in symptoms or symptoms[key] is None:
                 symptoms[key] = 0    
 

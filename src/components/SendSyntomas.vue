@@ -16,32 +16,36 @@
     <br />
 
     <input type="checkbox" id="chkFiebreRepentina" value="fiebre_repentina" v-model="checkedNames">
-    <label for="chkFiebreRepentina">fiebre repentina</label>
-
+    <label for="chkFiebreRepentina">fiebre repentina  &nbsp;</label>
     <input type="checkbox" id="chkDolorDeCabeza" value="dolor_de_cabeza" v-model="checkedNames">
-    <label for="chkDolorDeCabeza">dolor de cabeza</label>
+    <label for="chkDolorDeCabeza">dolor de cabeza  &nbsp;</label>
 
     <input type="checkbox" id="chkHemorragiaBucal" value="hemorragia_bucal" v-model="checkedNames">
-    <label for="chkHemorragiaBucal">hemorragia bucal</label>
-
+    <label for="chkHemorragiaBucal">hemorragia bucal  &nbsp;</label>
     <br />
     <br />
     <input type="checkbox" id="chkHemorragiaNasal" value="hemorragia_nasal" v-model="checkedNames">
-    <label for="chkHemorragiaNasal">hemorragia nasal</label>
+    <label for="chkHemorragiaNasal">hemorragia nasal &nbsp;</label>
 
     <input type="checkbox" id="chkDolorMuscular" value="dolor_muscular" v-model="checkedNames">
-    <label for="chkDolorMuscular">dolor muscular</label>
+    <label for="chkDolorMuscular">dolor muscular &nbsp;</label>
     
     <input type="checkbox" id="chkDolorDeArticulaciones" value="dolor_en_las_articulaciones" v-model="checkedNames">
-    <label for="chkDolorDeArticulaciones">dolor de articulaciones</label>
+    <label for="chkDolorDeArticulaciones">dolor de articulaciones &nbsp;</label>
     
     <br />
     <br />
     <input type="checkbox" id="chkVomitos" value="vomitos" v-model="checkedNames">
-    <label for="chkVomitos">vomitos</label>
+    <label for="chkVomitos">Vomitos&nbsp;</label>
     
+    <input type="checkbox" id="chkFatiga" value="Fatiga" v-model="checkedNames">
+    <label for="chkFatiga">Fatiga &nbsp;</label>
+
+    <input type="checkbox" id="chkOjosrojos" value="Ojos_rojos" v-model="checkedNames">
+    <label for="chkOjosrojos">Ojos rojos &nbsp;</label>
+
     <br> <br/>
-    <button @click="sendSymptoms">Enviar Síntomas</button>
+    <button type="button" class="btn btn-info" @click="sendSymptoms">Enviar Síntomas</button>
     <br><br/>
 
     <router-link to="/LocacionCliente">

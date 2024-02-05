@@ -1,13 +1,15 @@
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <template>
   <div>
     
     <div class="jumbotron3">
       <h2>Resultados</h2><!-- Galería de imágenes -->
     </div>
-    <h2>Hemos detectado en conjunto a lo seleccionado:</h2>
-    <h2>Fotografía, Síntomas y Locación </h2> 
-    <h2 style="background-color:tomato;">Podrías tener una enfermedad transmitida por mosquitos en un 76%. </h2> 
-    <h2>Te recomendamos que acudas a un médico para que te realice un diagnóstico más preciso. </h2>
+    <h3>Hemos detectado en conjunto a lo seleccionado:</h3>
+    <h3>Fotografía, Síntomas y Locación </h3> 
+    <h3 style="background-color:tomato;">Podrías tener una enfermedad transmitida por mosquitos en un 76%. </h3> 
+    <h3>Te recomendamos que acudas a un médico para que te realice un diagnóstico más preciso. </h3>
     <button type="button" class="btn btn-warning">Alertar a mis usuarios cercanos</button> <br><br/>
     <button type="button" class="btn btn-warning">Actualizar mapa de casos</button> <br><br/>
     <div class="entry-content entry clearfix">

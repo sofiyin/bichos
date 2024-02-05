@@ -10,9 +10,7 @@
     
 
     <div class="jumbotron2">
-      <div class="container text-center">
-        <router-view/>     
-      </div>
+      <router-view/>     
     </div>
     
     
